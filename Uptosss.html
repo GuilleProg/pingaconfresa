@@ -1,43 +1,221 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es" class="dark">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nub cat</title>
-    <link rel="stylesheet" href="./styles.css">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Nub Cat</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- AOS (Animate on Scroll) -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+    
+    <meta name="description" content="Nub Cat — fan page" />
+
+    <!-- Estilos CSS Personalizados -->
+    <style>
+        /* Usamos 'Inter' como fuente principal */
+        body {
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+            background-color: #111827; /* bg-gray-900 */
+        }
+        
+        /* Desplazamiento suave al hacer clic en anclas */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Comportamiento del fondo del héroe */
+        #hero {
+            transition: transform .7s ease, filter .35s ease;
+        }
+        
+        /* Estilos de foco visibles para accesibilidad (teclado) */
+        :focus {
+            outline: none;
+        }
+        :focus-visible {
+            outline: 3px solid rgba(56, 189, 248, 0.3); /* Cian transparente */
+            outline-offset: 2px;
+            border-radius: 4px;
+        }
+
+        /* Ocultar scrollbars en Webkit (Chrome, Safari) */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        /* Ocultar scrollbars en Firefox */
+        .no-scrollbar {
+            -ms-overflow-style: none;  /* IE y Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+    </style>
 </head>
-<body>
-    <header>
-             <div>
-        <h1>Nub cat: un gato azul mañoso</h1>
-             </div>
-                <nav>
-                     <ul>
-                        <li class="nav-link">Introducion</li>
-                        <li class="nav-link">¿Quien es?</li> 
-                        <li class="nav-link">¿Cuando fue su primera aparicion?</li>
-                        <li class="nav-link">¿Que tipo de memes sube?</li>
-                        <li class="nav-link">Memes de ejemplo</li>
-                        <li class="nav-link">Store de Nub cat</li>
-                     </ul>
-                </nav>
-             </header>
-      <main style="text-align: center;">
-     <section>
-        <article> 
-             <h3>Introduccion</h3>
-                <p class="oli">Nub Cat es un personaje de un gato azul y simpático que dibuja cosas divertidas junto con sus amigos. Fue creado hace aproximadamente 12 años por el artista Leon Karssen
-                     y se ha convertido en un meme original con una marca propia que combina humor y simplicidad en sus ilustraciones.
-                     Además, Nub Cat tiene presencia en redes sociales y en un proyecto de token llamado NUB en la blockchain Solana, 
-                    promoviendo su esencia divertida y creativa a través de diversas plataformas digitales</p>
-                   <br>
-                  <img class="nub" src="nubcat-iwanttocatyou.gif" alt="nub cat">
-                  <br>
-                  <a href="https://www.facebook.com/sillynubcat/?locale=es_LA">pagina de facebook de Nub Cat</a>
-             </article> 
-     </section>
+
+<body class="font-sans antialiased bg-gray-900 text-gray-100">
+
+    <!-- Header Fijo y Translúcido -->
+    <header class="fixed top-0 left-0 right-0 z-40 bg-gray-900/70 backdrop-blur-md shadow-lg border-b border-gray-800/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-20">
+            <!-- Logo y Título -->
+            <a class="flex items-center gap-3 group" href="#">
+                <!-- Icono de Gato (SVG) -->
+                <svg class="w-10 h-10 text-cyan-400 group-hover:text-cyan-300 transition-colors" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm3.28 12.03c-.2.2-.45.29-.71.29-.26 0-.51-.1-.71-.29l-1.29-1.29c-.39-.39-1.02-.39-1.41 0l-1.29 1.29c-.2.2-.45.29-.71.29-.26 0-.51-.1-.71-.29-.39-.39-.39-1.02 0-1.41l1.29-1.29c.39-.39.39-1.02 0-1.41l-1.29-1.29c-.39-.39-.39-1.02 0-1.41s1.02-.39 1.41 0l1.29 1.29c.39.39 1.02.39 1.41 0l1.29-1.29c.39-.39 1.02-.39 1.41 0s.39 1.02 0 1.41l-1.29 1.29c-.39.39-.39 1.02 0 1.41l1.29 1.29c.39.39.39 1.02 0 1.41z"/>
+                </svg>
+                <span class="font-extrabold text-xl md:text-2xl text-white group-hover:text-gray-200 transition-colors">Nub Cat</span>
+            </a>
+
+        </div>
+    </header>
+
+    <main id="mainContent" class="w-full transition-all duration-300 px-4 sm:px-6 lg:px-8 py-6 pt-28">
+
+        <!-- Sección Héroe -->
+        <section id="intro" class="relative rounded-2xl overflow-hidden h-[70vh] md:h-[75vh] shadow-2xl shadow-cyan-900/30 border border-gray-800/50">
+            <!-- Fondo dinámico de Unsplash -->
+            <div id="hero" class="absolute inset-0 bg-center bg-cover transform scale-100"></div>
+            <!-- Superposición de gradiente oscuro para legibilidad -->
+            <div class="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/30 to-transparent"></div>
+            
+            <div class="relative z-10 flex items-center justify-center h-full text-center">
+                <div class="max-w-3xl px-4 py-16" data-aos="fade-up" data-aos-delay="100">
+                    <h1 class="text-4xl md:text-6xl font-extrabold text-white leading-tight drop-shadow-lg">
+                        Nub Cat: un gato azul mañoso
+                    </h1>
+                    <p id="tagline" class="mt-6 text-lg md:text-xl text-gray-300 drop-shadow-md">
+                        Nub Cat es un personaje de un gato azul y simpático que dibuja cosas divertidas junto con sus amigos.
+                    </p>
+                    <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+                        <a href="#examples" class="inline-flex items-center justify-center px-8 py-3 rounded-full bg-cyan-500 text-gray-900 font-bold shadow-lg shadow-cyan-500/30 hover:bg-cyan-400 transition-all duration-300 transform hover:-translate-y-1 w-full sm:w-auto">
+                            Ver memes
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bloques de Contenido (Artículos) -->
+        <div class="mt-12 grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <article id="who" class="bg-gray-800/60 backdrop-blur-md p-6 rounded-2xl shadow-xl border border-gray-700/50" data-aos="fade-up">
+                <h3 class="text-2xl font-bold text-cyan-400">¿Quién es?</h3>
+                <p class="mt-3 text-gray-300 leading-relaxed">Nub Cat es un personaje tierno y absurdo que aparece en tiras e ilustraciones. Fue creado por Leon Karssen y combina humor y simplicidad.</p>
+            </article>
+
+            <article id="first" class="bg-gray-800/60 backdrop-blur-md p-6 rounded-2xl shadow-xl border border-gray-700/50" data-aos="fade-up" data-aos-delay="100">
+                <h3 class="text-2xl font-bold text-cyan-400">Primera aparición</h3>
+                <p class="mt-3 text-gray-300 leading-relaxed">El personaje ha aparecido en diversos proyectos y redes sociales a lo largo de los años, ganando popularidad por su estilo único.</p>
+            </article>
+        </div>
+
+        <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+            <article id="memes" class="bg-gray-800/60 backdrop-blur-md p-6 rounded-2xl shadow-xl border border-gray-700/50" data-aos="fade-up" data-aos-delay="150">
+                <h3 class="text-xl font-bold text-cyan-400">¿Qué tipo de memes?</h3>
+                <p class="mt-3 text-gray-300">Imágenes cortas, frases tontas y situaciones cotidianas con una estética simple, colorida y fácilmente reconocible.</p>
+            </article>
+
+            <article id="store" class="bg-gray-800/60 backdrop-blur-md p-6 rounded-2xl shadow-xl border border-gray-700/50" data-aos="fade-up" data-aos-delay="200">
+                <h3 class="text-xl font-bold text-cyan-400">Tienda</h3>
+                <p class="mt-3 text-gray-300">Merch, stickers y más en tiendas seleccionadas — próximamente.</p>
+            </article>
+        </div>
+
+        <!-- Sección de Ejemplos -->
+        <section id="examples" class="mt-12">
+            <h2 class="text-3xl font-extrabold mb-6 text-white" data-aos="fade-up">Memes de ejemplo</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Tarjeta de Imagen -->
+                <div class="rounded-2xl overflow-hidden shadow-xl border border-gray-700/50" data-aos="zoom-in">
+                    <img src="https://placehold.co/600x400/111827/38bdf8?text=Nub+Cat+GIF" alt="nub" class="w-full h-72 object-cover" 
+                         onerror="this.src='https://placehold.co/600x400/111827/38bdf8?text=Error+cargando+imagen'" />
+                </div>
+                <!-- Tarjeta de Texto -->
+                <div class="bg-gray-800/60 backdrop-blur-md p-6 rounded-2xl shadow-xl border border-gray-700/50 flex flex-col justify-center" data-aos="zoom-in" data-aos-delay="100">
+                    <h3 class="text-2xl font-bold text-cyan-400">Tira cómica</h3>
+                    <p class="mt-3 text-gray-300 leading-relaxed">Frases sencillas y situaciones absurdas que generan empatía inmediata y una sonrisa.</p>
+                </div>
+            </div>
+        </section>
+
     </main>
-    <footer></footer>
-    <a href=""></a>
+
+    <!-- Navegación Inferior (Solo para Móvil) -->
+    <nav id="bottomNav" class="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-40 md:hidden bg-gray-800/80 backdrop-blur-md rounded-full shadow-2xl border border-gray-700/50 px-4 py-2 flex gap-4">
+        <a href="#intro" class="p-3 rounded-full text-gray-300 hover:text-cyan-400 transition-colors" aria-label="Introducción">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6-4a1 1 0 001 1h2a1 1 0 001-1v-4a1 1 0 00-1-1h-2a1 1 0 00-1 1v4z"></path></svg>
+        </a>
+        <a href="#examples" class="p-3 rounded-full text-gray-300 hover:text-cyan-400 transition-colors" aria-label="Memes">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+        </a>
+        <a href="#store" class="p-3 rounded-full text-gray-300 hover:text-cyan-400 transition-colors" aria-label="Tienda">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+        </a>
+    </nav>
+
+    <!-- Footer -->
+    <footer class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 text-center text-sm text-gray-500 mt-12 border-t border-gray-800/50">
+        © <span id="currentYear"></span> Nub Cat — Rediseño hecho con 💙
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Inicializar AOS (Animate on Scroll)
+        AOS.init({ 
+            duration: 700, // Duración de la animación
+            once: true,     // Animar solo una vez
+            offset: 50      // Empezar animación 50px antes de que aparezca
+        });
+
+        // Establecer el año actual en el footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // Fondo dinámico para el Héroe (de Unsplash)
+        (function() {
+            try {
+                const hero = document.getElementById('hero');
+                const url = 'https://source.unsplash.com/1600x900/?abstract,blue,pattern,minimal';
+                hero.style.backgroundImage = `url(${url}&v=${Date.now()})`;
+                hero.style.filter = 'contrast(1.02) saturate(1.1)';
+            } catch (e) {
+                console.error("Error al cargar la imagen del héroe:", e);
+            }
+        })();
+
+        // Botón de Cita Aleatoria
+        (function() {
+            const btn = document.getElementById('randomQuoteBtn');
+            const tagline = document.getElementById('tagline');
+            const originalTagline = tagline.textContent;
+
+            if (btn) {
+                btn.addEventListener('click', async () => {
+                    try {
+                        btn.disabled = true;
+                        btn.textContent = 'Cargando...';
+                        const res = await fetch('https://api.quotable.io/random?tags=technology|famous-quotes');
+                        if (!res.ok) throw new Error('Respuesta de API no fue exitosa');
+                        const json = await res.json();
+                        tagline.textContent = `«${json.content}» — ${json.author}`;
+                    } catch (e) {
+                        console.error("Error al obtener cita:", e);
+                        tagline.textContent = originalTagline; // Revertir si falla
+                    } finally {
+                        btn.disabled = false;
+                        btn.textContent = 'Inspirar';
+                    }
+                });
+            }
+        })();
+
+        // Colapso de la Barra Lateral (Desktop) con persistencia en localStorage
+        // (Script de la barra lateral eliminado)
+    </script>
 </body>
 </html>

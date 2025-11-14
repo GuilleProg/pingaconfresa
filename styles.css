@@ -1,43 +1,24 @@
-h1{ 
-    color: #82b1ff;
-}
- 
-.nav-link{
-    color: #2586fd;
-    text-align: center;
-}
-body{
-    box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
-    background: linear-gradient(rgb(255, 255, 255), #9ec3ff);
-    
-}
+/* Minimal custom CSS used alongside Tailwind */
+/* Keep styles small: Tailwind handles most UI */
+:root { --transition-normal: 250ms; }
+html,body{height:100%;}
+body{font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; background: #f8fafc;}
 
-ul{
-    list-style: none;
-    color: #82b1ff;
-}
-a {
-    text-decoration: none;
-    color: #82b1ff;
-    padding: 15px;
-    border-radius: 10px;
-    
-}
-li{
-    background-color: #82b1ff;
-    margin: 13px;
-    padding: 10px;
-    border-radius: 8px;
-}
-p{
-   color: #82b1ff;
-   font-size: larger;
-}
-h3{
-    color: #82b1ff;
-}
-.nub{
-    border-radius: 18px;
-    text-align: center;
-}
+/* Hero background behaviour */
+#hero{background-position:center; background-size:cover; transition: transform .7s ease, filter .35s ease;}
+
+/* Sidebar helper when collapsed (we toggle utilities via JS too) */
+#sidebar.w-20 .label{display:none}
+
+/* Desktop sidebar sizing helpers */
+#sidebar{width:18rem}
+#sidebar.w-20{width:5rem}
+
+/* small overlay helper (used by script) */
+.fixed.inset-0.bg-black\/40{backdrop-filter: blur(2px);} 
+
+/* Accessibility focus visible only for keyboard users */
+:focus{outline: none}
+:focus-visible{outline: 3px solid rgba(99,102,241,0.2); outline-offset: 2px}
+
+/* keep styles.css minimal — Tailwind is primary */
